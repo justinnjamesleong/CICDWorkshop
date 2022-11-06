@@ -64,7 +64,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Email:*\n<${{ secrets.EMAIL }}>"
+                    "text": "*Email:*\n${{ secrets.EMAIL }}"
                   },
                   {
                     "type": "mrkdwn",
