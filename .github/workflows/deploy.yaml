@@ -33,17 +33,15 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v1.23.0
       with:
-        # For posting a rich message using Block Kit
-        
         payload: |
           {
             "blocks": [
-               
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "DipSA55 CI/CD Assignmnet Submission"
+                  "text": "DipSA55 CI/CD Assignmnet Submission",
+                  "emoji": "true"
                 }
               },
               { 
