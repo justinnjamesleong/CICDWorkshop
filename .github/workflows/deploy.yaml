@@ -3,7 +3,7 @@ name: Release and deploy Todo
 on:
   push:
     branches:
-    - "v[0-9].[0-9]"
+    - "v[0-9]+.[0-9]+"
 
 jobs:
   release-and-deploy:
@@ -29,4 +29,73 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
+    - name: deployment
+      id: slack
+      uses: slackapi/slack-github-action@v1.23.0
+      with:
+        # For posting a rich message using Block Kit
+        payload: |
+          {
+            "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "DipSA55 CI/CD Assignmnet Submission"
+                }
+              },
+              { 
+                "type":"section",
+                "fields": [
+                        {
+                                "type": "mrkdown",
+                                "text": "*Name:*/n${{ secrets.Name }}"
+                        }
+                        {
+                                "type": "mrkdown",
+                                "text": "*Metriculation:*/n${{ secrets.METRICULATION_NUMBER }}"
+                        }
+
+                ]
+
+              },
+              { 
+                "type":"section",
+                "fields": [
+                        {
+                                "type": "mrkdown",
+                                "text": "*Email:*/n<${{ secrets.EMAIL }}>"
+                        }
+                        {
+                                "type": "mrkdown",
+                                "text": "*Repository:*/n<${{ secrets.REPOSITORY }}>"
+                        }
+                ]
+
+              },
+              {
+                "type":"section",
+                "fields": [
+                        {
+                                "type": "mrkdown",
+                                "text": "*Deployment:*/n<${{ secrets.DEPLOYMENT }}>"
+                        }
+                ]
+
+              },
+              {
+                "type":"section",
+                "fileds": [
+                        {
+                                "type": "mrkdown",
+                                "text": "<${{ secrets.DEPLOYMENT }}|Open Application>"
+                        }
+                ]
+              }
+            ]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL1 }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
   
