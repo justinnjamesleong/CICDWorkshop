@@ -50,11 +50,11 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*Name:*/n${{ secrets.Name }}"
                   },
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*Metriculation:*/n${{ secrets.METRICULATION_NUMBER }}"
                   }
                 ]
@@ -63,11 +63,11 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*Email:*/n<${{ secrets.EMAIL }}>"
                   },
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*Repository:*/n<${{ secrets.REPOSITORY }}>"
                   }
                 ]
@@ -76,7 +76,7 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*Deployment:*/n<${{ secrets.DEPLOYMENT }}>"
                   }
                 ]
@@ -85,7 +85,7 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "<${{ secrets.DEPLOYMENT }}|Open Application>"
                   }
                 ]
